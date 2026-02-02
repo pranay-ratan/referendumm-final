@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        /* SFSS Branding Colors */
+        --background: 42 20% 95%;
+        --foreground: 215 80% 18%;
+        --card: 42 20% 98%;
+        --card-foreground: 215 80% 18%;
+        --popover: 42 20% 98%;
+        --popover-foreground: 215 80% 18%;
+        --primary: 215 80% 18%;
+        --primary-foreground: 0 0% 100%;
+        --secondary: 351 74% 37%;
+        --secondary-foreground: 0 0% 100%;
+        --muted: 42 15% 90%;
+        --muted-foreground: 215 30% 35%;
+        --accent: 45 100% 50%;
+        --accent-foreground: 215 80% 18%;
+        --destructive: 0 84.2% 60.2%;
+        --destructive-foreground: 0 0% 98%;
+        --border: 215 80% 18%;
+        --input: 215 40% 85%;
+        --ring: 215 80% 18%;
+        --radius: 0rem;
+
+        /* Custom SFSS colors */
+        --sfss-navy: 215 80% 18%;
+        --sfss-red: 351 74% 37%;
+        --sfss-gold: 45 100% 50%;
+        --sfss-bone: 42 20% 95%;
+    }
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+    
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    body {
+        @apply bg-background text-foreground;
+        font-family: 'DM Sans', sans-serif;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Syne', sans-serif;
+        letter-spacing: -0.02em;
+    }
+}
+
+/* Noise texture overlay */
+.noise-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+}
+
+::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary));
+}
+
+/* Hard shadow utility */
+.shadow-hard {
+    box-shadow: 4px 4px 0px 0px hsl(var(--primary));
+}
+
+.shadow-hard-sm {
+    box-shadow: 2px 2px 0px 0px hsl(var(--primary));
+}
+
+.shadow-hard-lg {
+    box-shadow: 6px 6px 0px 0px hsl(var(--primary));
+}
+
+/* Animation utilities */
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes count-up {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-count {
+    animation: count-up 0.5s ease-out forwards;
+}
+
+/* Section padding utility */
+.section-padding {
+    @apply py-20 md:py-28 lg:py-32;
+}
+
+/* Container utility */
+.container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-12;
+}
+
+@layer base {
+    [data-debug-wrapper="true"] {
+        display: contents !important;
+    }
+
+    [data-debug-wrapper="true"] > * {
+        margin-left: inherit;
+        margin-right: inherit;
+        margin-top: inherit;
+        margin-bottom: inherit;
+        padding-left: inherit;
+        padding-right: inherit;
+        padding-top: inherit;
+        padding-bottom: inherit;
+        column-gap: inherit;
+        row-gap: inherit;
+        gap: inherit;
+        border-left-width: inherit;
+        border-right-width: inherit;
+        border-top-width: inherit;
+        border-bottom-width: inherit;
+        border-left-style: inherit;
+        border-right-style: inherit;
+        border-top-style: inherit;
+        border-bottom-style: inherit;
+        border-left-color: inherit;
+        border-right-color: inherit;
+        border-top-color: inherit;
+        border-bottom-color: inherit;
+    }
+}
